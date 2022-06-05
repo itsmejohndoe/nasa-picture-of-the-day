@@ -8,7 +8,6 @@ part 'picture_model.g.dart';
 
 @JsonSerializable()
 class PictureModel extends Equatable {
-  final String copyright;
   final String date;
   final String title;
   final String explanation;
@@ -21,6 +20,7 @@ class PictureModel extends Equatable {
   final String? thumbnailUrl;
   @JsonKey(name: 'hdurl')
   final String? hdImageUrl;
+  final String? copyright;
 
   const PictureModel(
     this.copyright,

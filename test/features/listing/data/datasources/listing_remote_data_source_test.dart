@@ -44,7 +44,8 @@ void main() {
 
       test('check if [List<Picture>] is correctly returned when status code is 200', () async {
         // Arrange
-        dioAdapter.onGet('https://api.nasa.gov/', (server) => server.reply(200, jsonDecode(fixture('pictures.json'))));
+        dioAdapter.onGet(
+            'https://api.nasa.gov/planetary/apod', (server) => server.reply(200, jsonDecode(fixture('pictures.json'))));
         // Act
         final result = await listingRemoteDataSource.getPictures();
         // Assert
@@ -54,7 +55,7 @@ void main() {
 
       test('check if [ServerException] is thrown when status code is != from 200', () {
         // Arrange
-        dioAdapter.onGet('https://api.nasa.gov/', (server) => server.reply(400, 'error'));
+        dioAdapter.onGet('https://api.nasa.gov/planetary/apod', (server) => server.reply(400, 'error'));
         // Act
         // Assert
         expect(listingRemoteDataSource.getPictures(), throwsA(isA<ServerException>()));

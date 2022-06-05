@@ -23,7 +23,7 @@ void main() {
       // Act
       await listingLocalDataSource.store([]);
       // Assert
-      verify(() => mockPreferences.set<String>(any(), any())).called(0);
+      verifyNever(() => mockPreferences.set<String>(any(), any()));
     });
 
     test('check if [.set] is storing the data correctly', () async {
@@ -47,9 +47,20 @@ void main() {
       expect(result, isNull);
     });
 
-    test('check if [.get] is storing the data correctly', () async {
+    test('check if [.get] is handling empty string when reading stored', () async {
       // Arrange
       when(() => mockPreferences.get<String>(any())).thenReturn('');
+      // Act
+      final result = await listingLocalDataSource.retrieve();
+      // Assert
+      verify(() => mockPreferences.get<String>(any())).called(1);
+      expect(result, isNull);
+    });
+
+    test('check if [.get] is storing the data correctly', () async {
+      // Arrange
+      when(() => mockPreferences.get<String>(any())).thenReturn(
+          '[{"copyright":"","date":"","title":"","explanation":"","url":"","media_type":"image","service_version":"","thumbnail_url":"","hdurl":""}]');
       // Act
       final result = await listingLocalDataSource.retrieve();
       // Assert

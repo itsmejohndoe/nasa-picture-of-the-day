@@ -4,7 +4,6 @@ import '../../data/models/picture_model.dart';
 import '../../shared/enums/media_type.dart';
 
 class Picture extends Equatable {
-  final String copyright;
   final String date;
   final String title;
   final String explanation;
@@ -14,7 +13,6 @@ class Picture extends Equatable {
   final String? hdImageUrl;
 
   const Picture(
-    this.copyright,
     this.date,
     this.title,
     this.explanation,
@@ -26,7 +24,6 @@ class Picture extends Equatable {
 
   @override
   List<Object?> get props => [
-        copyright,
         date,
         title,
         explanation,
@@ -39,7 +36,6 @@ class Picture extends Equatable {
 
 extension XPictureModel on PictureModel {
   Picture toEntity() => Picture(
-        copyright,
         date,
         title,
         explanation,

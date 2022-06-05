@@ -7,7 +7,7 @@ part of 'picture_model.dart';
 // **************************************************************************
 
 PictureModel _$PictureModelFromJson(Map<String, dynamic> json) => PictureModel(
-      json['copyright'] as String,
+      json['copyright'] as String?,
       json['date'] as String,
       json['title'] as String,
       json['explanation'] as String,
@@ -20,7 +20,6 @@ PictureModel _$PictureModelFromJson(Map<String, dynamic> json) => PictureModel(
 
 Map<String, dynamic> _$PictureModelToJson(PictureModel instance) =>
     <String, dynamic>{
-      'copyright': instance.copyright,
       'date': instance.date,
       'title': instance.title,
       'explanation': instance.explanation,
@@ -29,4 +28,5 @@ Map<String, dynamic> _$PictureModelToJson(PictureModel instance) =>
       'service_version': instance.serviceVersion,
       'thumbnail_url': instance.thumbnailUrl,
       'hdurl': instance.hdImageUrl,
+      'copyright': instance.copyright,
     };
