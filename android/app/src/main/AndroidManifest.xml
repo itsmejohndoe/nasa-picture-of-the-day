@@ -1,7 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="johndoe.dev.nasa_apod">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
    <application
-        android:label="nasa_apod"
+        android:label="Nasa APOD"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

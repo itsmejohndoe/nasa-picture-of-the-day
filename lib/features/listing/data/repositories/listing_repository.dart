@@ -25,9 +25,10 @@ class ListingRepository extends ListingRepositoryContract {
     try {
       cache = await _localDataSource.retrieve();
       final result = await _remoteDataSource.getPictures();
-      await _localDataSource.store(result);
+      final reversed = result.reversed.toList();
+      await _localDataSource.store(reversed);
 
-      return Right(fromModelList(result));
+      return Right(fromModelList(reversed));
     } on NetworkException catch (e) {
       if (cache == null) {
         return Left(NetworkFailure(e.message));

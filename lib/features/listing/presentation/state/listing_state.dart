@@ -1,7 +1,4 @@
-import 'package:equatable/equatable.dart';
-
-import '../../../../shared/failures/custom_failure.dart';
-import '../../domain/entities/picture.dart';
+part of 'listing_bloc.dart';
 
 enum ListingStatus {
   idle,
@@ -12,19 +9,41 @@ enum ListingStatus {
 
 class ListingState extends Equatable {
   final ListingStatus status;
-  final List<Picture>? data;
   final CustomFailure? failure;
+  final String? searchTerm;
+  final List<Picture>? _data;
 
-  const ListingState(this.status, this.data, this.failure);
+  const ListingState(this.status, this._data, this.failure, this.searchTerm);
 
-  factory ListingState.idle() => const ListingState(ListingStatus.idle, null, null);
+  factory ListingState.idle() => const ListingState(ListingStatus.idle, null, null, null);
 
-  ListingState copyWith({ListingStatus? status, List<Picture>? data, CustomFailure? failure}) => ListingState(
+  List<Picture>? get data {
+    final list = _data;
+    if (list == null) {
+      return null;
+    }
+
+    final term = searchTerm;
+    if (term == null || term.isEmpty) {
+      return list;
+    } else {
+      return list.where((e) => e.title.toLowerCase().contains(term.toLowerCase()) || e.date.contains(term)).toList();
+    }
+  }
+
+  ListingState copyWith({
+    ListingStatus? status,
+    List<Picture>? data,
+    CustomFailure? failure,
+    String? search,
+  }) =>
+      ListingState(
         status ?? this.status,
-        data ?? this.data,
+        data ?? _data,
         failure ?? this.failure,
+        search,
       );
 
   @override
-  List<Object?> get props => [status, data, failure];
+  List<Object?> get props => [status, _data, failure, searchTerm];
 }

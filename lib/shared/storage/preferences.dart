@@ -17,9 +17,9 @@ class Preferences {
 
   T? get<T>(String key) {
     if (T == bool) {
-      return _sharedPreferences.getBool(key) as T;
+      return _sharedPreferences.getBool(key) as T?;
     } else if (T == String) {
-      return _sharedPreferences.getString(key) as T;
+      return _sharedPreferences.getString(key) as T?;
     } else {
       throw Exception('$T is not supported');
     }
