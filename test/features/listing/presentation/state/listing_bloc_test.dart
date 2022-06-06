@@ -5,19 +5,15 @@ import 'package:mocktail/mocktail.dart';
 import 'package:nasa_apod/features/listing/domain/entities/picture.dart';
 import 'package:nasa_apod/features/listing/domain/usecases/get_pictures_list.dart';
 import 'package:nasa_apod/features/listing/presentation/state/listing_bloc.dart';
-import 'package:nasa_apod/features/listing/presentation/state/listing_event.dart';
-import 'package:nasa_apod/features/listing/presentation/state/listing_state.dart';
 import 'package:nasa_apod/shared/failures/server_failure.dart';
 
 class MockGetPicturesList extends Mock implements GetPicturesList {}
 
 void main() {
   late MockGetPicturesList mockGetPicturesList;
-  late ListingBloc listingBloc;
 
   setUpAll(() {
     mockGetPicturesList = MockGetPicturesList();
-    listingBloc = ListingBloc(mockGetPicturesList);
   });
 
   group('tests for unsuccessful scenarios', () {
