@@ -26,9 +26,6 @@ void main() {
     listingRepository = ListingRepository(mockListingLocalDataSource, mockListingRemoteDataSource);
   });
 
-  // Arrange
-  // Act
-  // Assert
   group('tests for [ListingRepository.listPictures]', () {
     test(
         'check if [NetworkFailure] is returned if no cached data is found and the remote data source fails on loading data',
