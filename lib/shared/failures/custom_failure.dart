@@ -1,5 +1,7 @@
-class CustomFailure {
+import 'package:equatable/equatable.dart';
+
+abstract class CustomFailure extends Equatable {
   final String failureMessage;
 
-  CustomFailure(this.failureMessage);
+  const CustomFailure(this.failureMessage);
 }

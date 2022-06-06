@@ -1,5 +1,8 @@
 import 'custom_failure.dart';
 
 class ServerFailure extends CustomFailure {
-  ServerFailure(super.failureMessage);
+  const ServerFailure(super.failureMessage);
+
+  @override
+  List<Object?> get props => [failureMessage];
 }
