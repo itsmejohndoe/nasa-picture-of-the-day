@@ -41,7 +41,7 @@ void main() {
     test('check if [.get] is working properly for [bool] types', () async {
       // Arrange
       // Act
-      final result = await preferences.get<bool>('key');
+      final result = preferences.get<bool>('key');
       // Assert
       verify(() => mockSharedPreferences.getBool(any())).called(1);
       expect(result, true);
@@ -50,7 +50,7 @@ void main() {
     test('check if [.get] is working properly for [String] types', () async {
       // Arrange
       // Act
-      final result = await preferences.get<String>('key');
+      final result = preferences.get<String>('key');
       // Assert
       verify(() => mockSharedPreferences.getString(any())).called(1);
       expect(result, 'value');
