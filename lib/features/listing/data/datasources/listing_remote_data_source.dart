@@ -26,12 +26,12 @@ class ListingRemoteDataSource extends ListingRemoteDataSourceContract {
     }
 
     try {
-      final dateFormatter = DateFormat('YYYY-MM-DD');
+      final dateFormatter = DateFormat('yyyy-MM-dd');
       final now = DateTime.now();
       final response = await _httpCaller.get(_picturesUrl, queryParameters: {
         'api_key': 'vsr91Pi4jiJY5snh4VotWOvroMNc0X2LVOzJSQtk',
-        'start_date': dateFormatter.format(now),
-        'end_date': dateFormatter.format(now.subtract(const Duration(days: 30))),
+        'start_date': dateFormatter.format(now.subtract(const Duration(days: 30))),
+        'end_date': dateFormatter.format(now),
         'thumbs': true,
       });
 
