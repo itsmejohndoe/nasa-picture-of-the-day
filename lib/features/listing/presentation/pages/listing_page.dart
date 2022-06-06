@@ -41,7 +41,7 @@ class _ListingPageState extends State<ListingPage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text('Error loading pictures.'),
+                    Text(state.failure!.failureMessage),
                     const SizedBox(height: AppDimens.padding),
                     TextButton(
                       child: const Text('Try again'),

@@ -22,7 +22,7 @@ class ListingRemoteDataSource extends ListingRemoteDataSourceContract {
   Future<List<PictureModel>> getPictures() async {
     final isConnected = await _networkInfo.isConnected;
     if (!isConnected) {
-      throw const NetworkException('');
+      throw const NetworkException('You are offline.');
     }
 
     try {
